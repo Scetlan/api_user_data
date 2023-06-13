@@ -12,10 +12,6 @@ app.get('/', (req, res) => {
   res.send(indexTemplate(ReactDOM.renderToString(App())));
 })
 
-const myPrint = ({ data }) => {
-  console.log(data);
-}
-
 app.get('/auth', (req, res) => {
   axios.post(
     'https://www.reddit.com/api/v1/access_token',

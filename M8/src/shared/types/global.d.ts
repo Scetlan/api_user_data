@@ -1,4 +1,3 @@
 interface Window {
-    __token__: string;
-    token: string;
+    __token__?: string;
 }

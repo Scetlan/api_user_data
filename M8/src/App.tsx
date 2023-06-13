@@ -10,7 +10,8 @@ import { Layout } from "./shared/Layout";
 
 
 function AppComponent() {
-    const [token] = useToken()
+
+    const [token] = useToken();
 
     return (
         <Layout>
@@ -22,4 +23,4 @@ function AppComponent() {
     );
 }
 
-export const App = hot(AppComponent);
+export const App = hot(() => <AppComponent />);
