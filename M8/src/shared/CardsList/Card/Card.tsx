@@ -1,4 +1,5 @@
 import React from 'react';
+import { Post } from '../../../hooks/usePostsData';
 import { generateId } from '../../../utils/react/generateRandomIndex';
 import { Dropdown } from '../../Dropdown';
 import styles from './card.css';
@@ -74,10 +75,14 @@ const mobilList = [
   },
 ].map(generateId);
 
-export function Card() {
+export interface PostProps {
+  post: Post
+}
+
+export function Card(post: PostProps) {
   return (
     <li className={styles.card}>
-      <TextContent />
+      <TextContent post={post} />
 
       <Preview />
 

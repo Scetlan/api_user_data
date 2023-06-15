@@ -4,22 +4,26 @@ import { useToken } from "./hooks/useToken";
 import './main.global.css';
 import { CardsList } from "./shared/CardsList";
 import { Content } from "./shared/Content";
+import { tokenContext } from "./shared/context/tokenContext";
+import { UserContexProvider } from "./shared/context/userContext";
 import { Header } from "./shared/Header";
 import { Layout } from "./shared/Layout";
-// import { EColor, NameUser } from "./shared/NameUser";
 
 
 function AppComponent() {
-
     const [token] = useToken();
 
     return (
-        <Layout>
-            <Header token={token}/>
-            <Content>
-                <CardsList />
-            </Content>
-        </Layout>
+        <tokenContext.Provider value={token}>
+            <UserContexProvider>
+                <Layout>
+                    <Header />
+                    <Content>
+                        <CardsList />
+                    </Content>
+                </Layout>
+            </UserContexProvider>
+        </tokenContext.Provider>
     );
 }
 
