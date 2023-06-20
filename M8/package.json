@@ -4,14 +4,16 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build:dev": "env NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=development webpack --config webpack.config.js ",
-    "build:prod": "env NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "env NODE_OPTIONS=--openssl-legacy-provider CLIENT_ID=nX9OpC-uNuyAX6uskR7HIQ NODE_ENV=development node ./bin/dev.js",
+    "build:dev": "env NODE_ENV=development webpack --config webpack.config.js ",
+    "build:prod": "env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "env CLIENT_ID=nX9OpC-uNuyAX6uskR7HIQ NODE_ENV=development node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.4.0",
+    "classnames": "^2.3.2",
     "express": "^4.17.1",
     "nodemon": "^2.0.22",
     "react": "^17.0.1",
@@ -20,6 +22,8 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.1",
+    "@types/classnames": "^2.3.1",
+    "@types/react-dom": "^18.2.5",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^3.4.2",
     "eslint-plugin-react-hooks": "^4.6.0",

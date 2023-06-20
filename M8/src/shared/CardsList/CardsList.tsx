@@ -11,9 +11,8 @@ export function CardsList() {
   return (
     <ul className={styles.cardsList}>
       <postsContext.Provider value={posts}>
-        {posts.map((post) => <Card post={post}/>)}
+        {posts.map((post) => <Card key={post.id} post={post} />)}
       </postsContext.Provider>
-
     </ul>
   );
 }

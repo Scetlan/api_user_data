@@ -12,7 +12,7 @@ interface IMyListProps {
 }
 
 
-export function DropDownMenu({ list }: IMyListProps) {
+export function IDropDownMenu({ list }: IMyListProps) {
 
   return (
     <div className={styles.containerMenu}>

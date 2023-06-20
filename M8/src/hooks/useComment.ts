@@ -2,32 +2,26 @@ import axios from "axios";
 import React, { useEffect, useContext, useState } from "react";
 import { tokenContext } from "../shared/context/tokenContext";
 
-export interface Post {
-    id?: string;
-    title?: string;
-    author?: string;
-    thumbnail?: string;
-    icon_img?: string;
-    subreddit?: string;
+export interface ICommentInfo {
+    id?: string,
+    author?: string,
+    icon_img?: string,
 }
 
-
-export function usePostsData() {
+export function useComment(subreddit: string, postId: string) {
     const token = useContext(tokenContext);
-    const [posts, setPosts] = useState<Post[]>([]);
+    const [posts, setPosts] = useState<ICommentInfo[]>([]);
 
     useEffect(() => {
         if (token) {
             console.log(`Токен: ${token}`); //удалить консоль console.log(`Токен: ${token}`);
-            axios.get('https://oauth.reddit.com/best.json?sr_detail=true&limit=5', {
+            axios.get(`http://api.reddit.com/r/${subreddit}/comments/${postId}`, {
                 headers: { Authorization: `bearer ${token}` },
             }).then((response) => {
                 const posts = response.data.data.children.map((post: any) => {
                     return {
                         id: post.data.id,
-                        title: post.data.title,
                         author: post.data.author,
-                        thumbnail: post.data.thumbnail,
                         icon_img: post.data.sr_detail.icon_img,
                         subreddit: post.data.subreddit,
                     }
@@ -41,4 +35,3 @@ export function usePostsData() {
     return [posts];
 
 }
-

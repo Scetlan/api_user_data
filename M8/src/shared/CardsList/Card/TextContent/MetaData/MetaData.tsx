@@ -1,15 +1,17 @@
 import React from 'react';
+import { PostProps } from '../../Card';
 import styles from './metadata.css';
 
 interface User {
   children?: React.ReactNode;
+  icon?: string;
 }
 
-export function MetaData({ children }: User) {
+export function MetaData({ children, icon }: User) {
   return (
     <div className={styles.metaData}>
       <div className={styles.userlink}>
-        <img className={styles.avatar} src="https://cdn.dribbble.com/userupload/7130529/file/original-011352bd94a356b528eeb6d7198d87a0.png?compress=1&resize=30x"
+        <img className={styles.avatar} src={icon}
           alt="avatar"
         />
         <a href="#user-url" className={styles.username}>{children}</a>

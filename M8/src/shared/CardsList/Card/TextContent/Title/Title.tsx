@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Post } from '../../../../Post';
+import { PostProps } from '../../Card';
 import styles from './title.css';
 
-interface Title {
-  children?: React.ReactNode;
-}
 
-export function TitleComponent({ children }: Title) {
+
+export function TitleComponent({ post }: PostProps) {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <h2 className={styles.title}>
-      <a href='#post-url' className={styles.postLink}>
-        {children}
+      <a className={styles.postLink} onClick={() => { setIsModalOpen(true); }}>
+        {post.title}
       </a>
+
+      {isModalOpen && (
+        <Post
+          onClose={() => {setIsModalOpen(false);}}
+          post={post.title} />
+      )}
     </h2>
   );
 }

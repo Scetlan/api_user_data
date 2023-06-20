@@ -1,24 +1,10 @@
 import React from 'react';
 import { Post } from '../../../hooks/usePostsData';
 import { generateId } from '../../../utils/react/generateRandomIndex';
-import { Dropdown } from '../../Dropdown';
 import styles from './card.css';
 import { Control } from './Control';
-import { DropDownMenu, DropDownMenuMobil } from './Menu/DropDownMenu';
 import { Preview } from './Preview';
 import { TextContent } from './TextContent';
-
-const menuButton = () => {
-  return (
-    <button className={styles.menuButton}>
-      <svg width="5" height="20" viewBox="0 0 5 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="2.5" cy="2.5" r="2.5" fill="#D9D9D9" />
-        <circle cx="2.5" cy="10" r="2.5" fill="#D9D9D9" />
-        <circle cx="2.5" cy="17.5" r="2.5" fill="#D9D9D9" />
-      </svg>
-    </button>
-  )
-}
 
 const list = [
   {
@@ -75,28 +61,20 @@ const mobilList = [
   },
 ].map(generateId);
 
+
 export interface PostProps {
   post: Post
 }
 
-export function Card(post: PostProps) {
+export function Card({ post }: PostProps) {
+
   return (
     <li className={styles.card}>
       <TextContent post={post} />
 
-      <Preview />
+      <Preview thumbnail={post.thumbnail} />
 
-      <div className={styles.menu}>
-        <div>
-          <Dropdown
-            button={menuButton()}>
-            <DropDownMenu list={list} />
-            <DropDownMenuMobil list={mobilList} />
-          </Dropdown>
-        </div>
-      </div>
-
-      <Control />
+      <Control list={list}/>
     </li>
   );
 }
