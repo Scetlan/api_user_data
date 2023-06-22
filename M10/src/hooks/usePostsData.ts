@@ -17,7 +17,7 @@ export function usePostsData() {
     const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
-        if (token) {
+        if (token !== undefined) {
             console.log(`Токен: ${token}`); //удалить консоль console.log(`Токен: ${token}`);
             axios.get('https://oauth.reddit.com/best.json?sr_detail=true&limit=5', {
                 headers: { Authorization: `bearer ${token}` },

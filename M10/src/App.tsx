@@ -12,6 +12,7 @@ import { UserContexProvider } from "./shared/context/userContext";
 import { Header } from "./shared/Header";
 import { Layout } from "./shared/Layout";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { rootRecucer } from "./store";
 
 const userData = [
     {
@@ -31,7 +32,8 @@ const userData = [
     },
 ];
 
-const store = createStore(() => { }, composeWithDevTools());
+
+const store = createStore(rootRecucer, composeWithDevTools());
 
 function AppComponent() {
     const [commentValue, setCommentValue] = useState('');

@@ -13,7 +13,7 @@ export function useComment(subreddit: string, postId: string) {
     const [posts, setPosts] = useState<ICommentInfo[]>([]);
 
     useEffect(() => {
-        if (token) {
+        if (token !== undefined) {
             console.log(`Токен: ${token}`); //удалить консоль console.log(`Токен: ${token}`);
             axios.get(`http://api.reddit.com/r/${subreddit}/comments/${postId}`, {
                 headers: { Authorization: `bearer ${token}` },
