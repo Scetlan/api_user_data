@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useContext, useState } from "react";
-import { tokenContext } from "../shared/context/tokenContext";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 export interface IData {
     id?: string;
@@ -14,10 +15,10 @@ export interface ICommentInfo {
 }
 
 export function useComment(subreddit?: string, postId?: string) {
-    const token = useContext(tokenContext);
+    const token = useSelector((state: RootState) => state.token);
     const [comment, setComment] = useState<ICommentInfo>();
 
-    useEffect(() => {
+    // useEffect(() => {
         if (token) {
             axios.get(`https://oauth.reddit.com/r/${subreddit}/comments/${postId}`, {
                 headers: { Authorization: `bearer ${token}` },
@@ -36,7 +37,7 @@ export function useComment(subreddit?: string, postId?: string) {
             })
                 .catch(console.log);
         }
-    }, [token]);
+    // }, [token]);
 
     return [comment];
 

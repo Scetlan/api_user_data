@@ -3,7 +3,6 @@ import { hot } from "react-hot-loader/root";
 import { useToken } from "./hooks/useToken";
 import './main.global.css';
 import { CardsList } from "./shared/CardsList";
-import { Comment } from "./shared/Comment";
 import { Content } from "./shared/Content";
 import { commentContext } from "./shared/context/commentContext";
 import { tokenContext } from "./shared/context/tokenContext";
